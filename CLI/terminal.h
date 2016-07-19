@@ -1,4 +1,4 @@
-#ifndef TERMINAL_H_   /* Include guard */
+#ifndef TERMINAL_H_ 
 #define TERMINAL_H_
 
 #include <cstdio>
@@ -6,13 +6,15 @@
 #include <cstring>
 #include <conio.h>
 #include <iostream>
-//#include "helper.h"
 #include "autocomplete.h"
 
 using namespace std;
 
 #define CMD_LEN 100
 #define HELP_MAX 100
+
+#define back 0
+#define fwd !back
 
 //////////////////////////////////////////////////////////////////////////////////
 

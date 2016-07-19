@@ -1,37 +1,12 @@
 // terminal.cpp : Defines the entry point for the console application.
 //
 #include "terminal.h"
+#include "auto.h"
 
 char command[CMD_LEN];
 int count = 0;
 
-void CMD1(char* cmd) 
-{
-	printf("CMD1\n");
-}
 
-void CMD2(char* cmd)
-{
-	printf("CMD2\n");
-}
-
-void CMD3(char* cmd)
-{
-	printf("CMD3\n");
-}
-
-void CMD4(char* cmd)
-{
-	printf("CMD4\n");
-}
-
-menu_t menu[] =
-{
-	{ "cmd1",&CMD1,{ "CMD1 help" } },
-	{ "cmd2",&CMD2,{ "CMD2 help" } },
-	{ "cmd3",&CMD3,{ "CMD3 help" } },
-	{ "cmd4",&CMD4,{ "CMD4 help" } },
-};
 
 void add_to_command(char c)
 {
@@ -104,7 +79,7 @@ void listen()
 			break;
 
 		case '?':
-			show_help();
+			//show_help();
 			break;
 
 		case 3: // ^C
@@ -115,13 +90,14 @@ void listen()
 		case '\b':
 		case 127:
 			delete_from_command();
+			node = autocomplete_helper(node, '<', back);
 			break;
 
 		default:
 			if (((c >= 'a') && (c <= 'z')) || ((c >= 'A') || (c <= 'Z')) || ((c >= '0') && (c <= '9')))
 			{
 				add_to_command(c);
-				node = autocomplete_helper(node, c);
+				node = autocomplete_helper(node, c, fwd);
 			}
 			break;
 		}

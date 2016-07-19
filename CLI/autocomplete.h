@@ -1,4 +1,4 @@
-#ifndef AUTOCOMPLETE_H_   /* Include guard */
+#ifndef AUTOCOMPLETE_H_  
 #define AUTOCOMPLETE_H_
 #include<stdio.h>
 #include<stdlib.h>
@@ -15,6 +15,7 @@ extern int printcnt;
 typedef struct nodetype
 {
 	struct nodetype* node[27];
+	struct nodetype* prev;
 }trie;
 
 extern trie root;
@@ -22,9 +23,9 @@ extern trie root;
 
 trie* AddNode(trie* node, char alphabet);
 bool AddtoDict(char * word);
-void printNode(trie* node);
+void printNode(trie* node,char* cmd);
 void autocomplete(trie* node);
-trie* autocomplete_helper(trie* node, char alphabet);
+trie* autocomplete_helper(trie* node, char alphabet, int dir);
 
 #endif // AUTOCOMPLETE_H_
 

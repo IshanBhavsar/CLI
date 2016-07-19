@@ -2,10 +2,10 @@
 
 int main()
 {
-	AddtoDict("cmda");
-	AddtoDict("cmdb");
-	AddtoDict("cmdc");
-	AddtoDict("cmdd");
+	AddtoDict("commanda");
+	AddtoDict("commandb");
+	AddtoDict("commandc");
+	AddtoDict("commandd");
 
 
 	listen();
